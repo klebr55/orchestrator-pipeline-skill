@@ -15,7 +15,7 @@ Orchestrator Pipeline es una skill abierta para agentes que implementan interfac
 Necesitas Node.js 20+ y Git. Ejecuta en la carpeta de tu proyecto:
 
 ```bash
-npx --yes --package=github:klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
+npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
 ```
 
 Se instalan **nueve skills**: esta y ocho complementarias, directamente desde los repositorios de sus autores. Añade `--global` para utilizarlas en todos tus proyectos. Sustituye `codex` por `antigravity`, `cursor`, `claude-code` u otro identificador compatible con [Skills CLI](https://github.com/vercel-labs/skills). Usa `--dry-run` para revisar los comandos antes de ejecutarlos.
@@ -23,12 +23,10 @@ Se instalan **nueve skills**: esta y ocho complementarias, directamente desde lo
 Con npm, el mismo proceso es:
 
 ```bash
-npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
+npm exec --yes --package=@klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
 ```
 
-El paquete se ejecuta desde GitHub y **no necesita publicarse en el registro npm**. Ejecuta `npm exec --package=skills@latest -- skills add` para cada origen y se detiene en el primer error. Si falla uno, corrige el acceso y vuelve a ejecutar el comando. No requiere una licencia de pago ni redistribuye aquí el contenido de terceros.
-
-Después de la primera publicación en npm, también podrás usar `npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex`. Hasta entonces, usa los comandos de GitHub anteriores.
+El paquete está [publicado en npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). El instalador ejecuta `npm exec --package=skills@latest -- skills add` para cada origen y se detiene en el primer error. Si falla uno, corrige el acceso y vuelve a ejecutar el comando. No requiere una licencia de pago ni redistribuye aquí el contenido de terceros. Para ejecutarlo directamente desde GitHub, sustituye `--package=@klebr55/orchestrator-pipeline-skill` por `--package=github:klebr55/orchestrator-pipeline-skill`.
 
 ## Las piezas del conjunto
 
@@ -91,9 +89,9 @@ y entrega las cuatro etapas con pruebas y evidencia del navegador.
 
 Consulta la [skill completa y su plantilla para workers](../skills/orchestrator-pipeline/SKILL.md). Por defecto, la instalación se limita al proyecto y no modifica las skills globales. Comprueba el resultado con `npx skills ls -a codex` (añade `-g` para el ámbito global).
 
-## Publicar en npm
+## Próximas versiones
 
-La cuenta que publique necesita permiso en el ámbito npm `@klebr55`. Si `npm whoami` muestra otra cuenta, esta debe pertenecer a la organización npm `klebr55` con permiso de publicación; otra opción es cambiar el ámbito del paquete y empaquetarlo de nuevo. Ejecuta `npm login` en tu equipo, confirma con `npm whoami`, ejecuta `npm test` y `npm pack --dry-run`, revisa los archivos y publica la primera versión con `npm publish --access public`. Nunca compartas contraseñas ni tokens en el chat. Después, configura [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) para el workflow manual `.github/workflows/publish.yml`. Consulta la [guía completa en inglés](../README.md#publish-to-npm).
+La versión `1.0.0` ya está publicada. Las siguientes versiones usan [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) mediante el workflow manual [Publish to npm](../.github/workflows/publish.yml) en GitHub, sin un token permanente. Actualiza `package.json` y `package-lock.json` a una versión nueva, revisa los archivos con `npm pack --dry-run`, ejecuta `npm test`, registra los cambios en `main` y ejecuta el workflow desde Actions. Comprueba la versión publicada en [npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). Consulta la [guía en inglés](../README.md#releasing).
 
 ## Autoría y límites
 
