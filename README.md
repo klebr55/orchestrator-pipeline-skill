@@ -24,7 +24,7 @@ Com npm, o mesmo fluxo é:
 npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
 ```
 
-Este pacote pode ser executado diretamente do GitHub; **não depende de publicação no registro npm**. A instalação usa `npx skills@latest add` para cada origem e para se no primeiro erro. Se uma origem falhar, corrija o acesso e repita o comando. O instalador não pede licença paga e não copia as skills de terceiros para este repositório.
+Este pacote pode ser executado diretamente do GitHub; **não depende de publicação no registro npm**. A instalação usa `npm exec --package=skills@latest -- skills add` para cada origem e para se no primeiro erro. Se uma origem falhar, corrija o acesso e repita o comando. O instalador não pede licença paga e não copia as skills de terceiros para este repositório.
 
 ## O que entra no conjunto
 

@@ -24,7 +24,7 @@ The equivalent npm command is:
 npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
 ```
 
-The package runs from GitHub and **does not require publication to the npm registry**. It invokes `npx skills@latest add` for each upstream source and stops on the first error. Fix access and rerun the command if a source fails. No paid license is required; this repository does not redistribute third-party skill content.
+The package runs from GitHub and **does not require publication to the npm registry**. It invokes `npm exec --package=skills@latest -- skills add` for each upstream source and stops on the first error. Fix access and rerun the command if a source fails. No paid license is required; this repository does not redistribute third-party skill content.
 
 ## The ensemble
 
