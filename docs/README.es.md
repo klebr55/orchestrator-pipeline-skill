@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-hero.webp" alt="Núcleo de orquestación que conecta dirección visual, componentes, movimiento y validación" width="100%" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg" alt="Orchestrator Pipeline: una dirección, varias especialidades y evidencia en el navegador" width="100%" /></p>
 
 # Orchestrator Pipeline
 
@@ -93,7 +93,7 @@ Consulta la [skill completa y su plantilla para workers](../skills/orchestrator-
 
 ## Publicar en npm
 
-El titular de la cuenta npm `klebr55` debe ejecutar `npm login` en su equipo. Confirma la cuenta con `npm whoami`, ejecuta `npm test` y `npm pack --dry-run`, revisa los archivos y publica la primera versión con `npm publish --access public`. Nunca compartas contraseñas ni tokens en el chat. Después, puedes configurar [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) para el workflow manual `.github/workflows/publish.yml` y publicar nuevas versiones sin un token permanente. Consulta la [guía completa en inglés](../README.md#publish-to-npm).
+La cuenta que publique necesita permiso en el ámbito npm `@klebr55`. Si `npm whoami` muestra otra cuenta, esta debe pertenecer a la organización npm `klebr55` con permiso de publicación; otra opción es cambiar el ámbito del paquete y empaquetarlo de nuevo. Ejecuta `npm login` en tu equipo, confirma con `npm whoami`, ejecuta `npm test` y `npm pack --dry-run`, revisa los archivos y publica la primera versión con `npm publish --access public`. Nunca compartas contraseñas ni tokens en el chat. Después, configura [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) para el workflow manual `.github/workflows/publish.yml`. Consulta la [guía completa en inglés](../README.md#publish-to-npm).
 
 ## Autoría y límites
 

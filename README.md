@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-hero.webp" alt="An orchestration core connecting visual direction, components, motion and browser evidence" width="100%" />
+  <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg" alt="Orchestrator Pipeline. One direction. Many specialists. Evidence in the browser. Four stages and the technology ecosystem." width="100%" />
 </p>
 
 <h1 align="center">Orchestrator Pipeline</h1>
@@ -100,6 +100,8 @@ The visual references in the [skill itself](skills/orchestrator-pipeline/SKILL.m
 
 The worker scopes DevTools calls to a concrete question. Its token cost informs that scope; it never overrides the need for useful evidence. Playwright and DevTools sessions may not share cookies or browser state.
 
+The banner uses original editorial layout and verified brand marks from [Simple Icons](https://simpleicons.org/), [Playwright](https://github.com/microsoft/playwright.dev), and [React Bits](https://github.com/DavidHDev/react-bits). Marks identify tools in the ecosystem; they do not imply endorsement.
+
 ## Configure the tools
 
 The one-command installer installs **skill instructions**. Browser executables, MCP servers, and project components have separate setup:
@@ -127,7 +129,7 @@ diagnostics where its deeper evidence helps. Report fixes and browser evidence.
 
 ## Publish to npm
 
-The package is prepared as **`@klebr55/orchestrator-pipeline-skill`** with public access. The GitHub installer works independently of npm publication. To make the registry command above live, the package owner needs an [npm account](https://www.npmjs.com/signup) whose username owns the `@klebr55` scope.
+The package is prepared as **`@klebr55/orchestrator-pipeline-skill`** with public access. The GitHub installer works independently of npm publication. To make the registry command above live, the publisher needs an [npm account](https://www.npmjs.com/signup) authorized for the `@klebr55` scope. If `npm whoami` shows a different account, that account must belong to an npm organization named `klebr55` with publish access, or the package must be renamed to its own scope and repacked before release.
 
 ```bash
 git clone https://github.com/klebr55/orchestrator-pipeline-skill.git
