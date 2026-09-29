@@ -2,7 +2,7 @@
 <title id="title">Orchestrator Pipeline — one direction, many specialists, evidence in the browser</title>
 <desc id="desc">An editorial banner with a four-stage workflow and logos for React, Three.js, GSAP, WebGL, shadcn, Playwright, Chrome DevTools, Vercel, and npm.</desc>
 <rect width="1800" height="700" fill="#F1EFE8"/>
-<path d="M70 103H1730M70 523H1730" stroke="#22272B" stroke-width="2"/>
+<path d="M70 103H1730" stroke="#22272B" stroke-width="2"/>
 <rect x="70" y="151" width="10" height="237" fill="#DC5232"/>
 <text x="102" y="78" fill="#474E50" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" letter-spacing="4">AN OPEN-SOURCE FRONTEND ORCHESTRATION SYSTEM</text>
 <text x="1728" y="78" fill="#474E50" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" letter-spacing="2">SKILL  /  01</text>
