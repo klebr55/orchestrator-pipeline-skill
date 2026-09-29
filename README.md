@@ -27,14 +27,14 @@ Orchestrator Pipeline is an open Agent Skill for frontend workers. It coordinate
   <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/pipeline-map.svg" alt="Four-stage pipeline: understand the product, choose components, coordinate motion and 3D, and validate in the browser; findings feed back into implementation" width="100%" />
 </p>
 
-<p align="center"><a href="#install">Install</a> · <a href="#the-ensemble">The ensemble</a> · <a href="#how-it-works">How it works</a> · <a href="#configure-the-tools">Configure tools</a> · <a href="#publish-to-npm">Publish to npm</a></p>
+<p align="center"><a href="#install">Install</a> · <a href="#the-ensemble">The ensemble</a> · <a href="#how-it-works">How it works</a> · <a href="#configure-the-tools">Configure tools</a> · <a href="#releasing">Releasing</a></p>
 
 ## Install
 
 Requires **Node.js 20+** and **Git**. Run this inside your project:
 
 ```bash
-npx --yes --package=github:klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
+npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
 ```
 
 This installs **nine Agent Skills**: the orchestrator and eight companion skills from their original repositories. It installs into the current project by default. Add `--global` for your user account, change `codex` to an agent supported by [Skills CLI](https://github.com/vercel-labs/skills), or preview all operations with `--dry-run`.
@@ -42,16 +42,10 @@ This installs **nine Agent Skills**: the orchestrator and eight companion skills
 Prefer npm's explicit syntax? It runs the same package:
 
 ```bash
-npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
+npm exec --yes --package=@klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
 ```
 
-Once the first npm registry release is published, you can use the registry package name:
-
-```bash
-npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
-```
-
-**Current distribution:** the GitHub commands above work now; the registry command becomes available only after the [first npm publication](#publish-to-npm). Check installation with `npx skills ls -a codex`.
+The package is [public on npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). Preview the operations by adding `--dry-run` to the install command; then check the result with `npx skills ls -a codex`. To run directly from GitHub instead of the registry, use `--package=github:klebr55/orchestrator-pipeline-skill`.
 
 ## The ensemble
 
@@ -127,23 +121,11 @@ Validate changed routes with Playwright CLI; use Chrome DevTools MCP for targete
 diagnostics where its deeper evidence helps. Report fixes and browser evidence.
 ```
 
-## Publish to npm
+## Releasing
 
-The package is prepared as **`@klebr55/orchestrator-pipeline-skill`** with public access. The GitHub installer works independently of npm publication. To make the registry command above live, the publisher needs an [npm account](https://www.npmjs.com/signup) authorized for the `@klebr55` scope. If `npm whoami` shows a different account, that account must belong to an npm organization named `klebr55` with publish access, or the package must be renamed to its own scope and repacked before release.
+The initial `1.0.0` release is public on npm. Subsequent releases use [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) with the manually triggered [GitHub Actions workflow](.github/workflows/publish.yml). The trust relationship is configured for `klebr55/orchestrator-pipeline-skill` and `publish.yml`, with direct publishing allowed. No long-lived npm token is needed in GitHub Actions.
 
-```bash
-git clone https://github.com/klebr55/orchestrator-pipeline-skill.git
-cd orchestrator-pipeline-skill
-npm login
-npm whoami
-npm test
-npm pack --dry-run
-npm publish --access public
-```
-
-Review the `npm pack --dry-run` file list before publishing. npm requires publishing authorization, typically account two-factor authentication for a direct release; run the login and verification on your own machine, and never paste a token into an issue or chat. The first release is irreversible as a version identifier; future updates need a new version number. See [npm's public scoped package guide](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages/).
-
-After the first release, configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) in the package settings: provider **GitHub Actions**, owner **`klebr55`**, repository **`orchestrator-pipeline-skill`**, workflow filename **`publish.yml`**, and **direct publishing** allowed. The manually triggered `.github/workflows/publish.yml` then publishes subsequent versions through GitHub Actions OIDC, without a long-lived npm publish token. Bump `package.json` to an unused version, commit it to `main`, and run the workflow from `main`.
+Update `package.json` and `package-lock.json` to the next unused version, review the documentation and package contents, run `npm test` and `npm pack --dry-run`, then commit the changes to `main`. Run **Publish to npm** from GitHub Actions on `main` and verify the version on [npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). A published name/version pair cannot be reused. The workflow uses GitHub OIDC on a hosted runner and requires Node.js 24 with a current npm CLI.
 
 ## Authorship and limits
 
