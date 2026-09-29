@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg" alt="Orchestrator Pipeline: una dirección, varias especialidades y evidencia en el navegador" width="100%" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg?v=2b43980" alt="Orchestrator Pipeline: una dirección, varias especialidades y evidencia en el navegador" width="100%" /></p>
 
 # Orchestrator Pipeline
 
