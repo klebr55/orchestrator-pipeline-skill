@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="356" viewBox="0 0 1200 356" role="img" aria-labelledby="title desc">
+  <title id="title">The Orchestrator Pipeline</title>
+  <desc id="desc">Four stages: read, compose, choreograph, and verify. Browser evidence loops back to the work.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0B1220"/><stop offset="1" stop-color="#15142A"/></linearGradient>
+    <linearGradient id="line" x2="1"><stop stop-color="#61D8DB"/><stop offset=".55" stop-color="#AFA5FF"/><stop offset="1" stop-color="#FBC89B"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="11"/></filter>
+  </defs>
+  <rect width="1200" height="356" rx="26" fill="url(#bg)"/>
+  <path d="M36 295H1164" stroke="#28364B" stroke-width="1"/>
+  <text x="42" y="44" fill="#8FA5B9" font-family="Arial,Helvetica,sans-serif" font-size="15" letter-spacing="3">A SYSTEM FOR BETTER DECISIONS</text>
+  <path d="M72 156H1128" stroke="url(#line)" stroke-width="16" opacity=".18" filter="url(#glow)"/>
+  <path d="M72 156H1128" stroke="url(#line)" stroke-width="2" opacity=".8"/>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <g transform="translate(42 94)"><rect width="267" height="154" rx="18" fill="#142538" stroke="#3A8792"/><circle cx="28" cy="30" r="14" fill="#61D8DB"/><text x="28" y="35" fill="#0B1220" text-anchor="middle" font-size="13" font-weight="700">01</text><text x="20" y="74" fill="#EAF6F7" font-size="25" font-weight="700">Read</text><text x="20" y="105" fill="#ACC2CE" font-size="14">Product · people · constraints</text><text x="20" y="127" fill="#ACC2CE" font-size="14">Visual thesis and motion map</text></g>
+    <g transform="translate(325 94)"><rect width="267" height="154" rx="18" fill="#1A223B" stroke="#6872B2"/><circle cx="28" cy="30" r="14" fill="#AFA5FF"/><text x="28" y="35" fill="#0B1220" text-anchor="middle" font-size="13" font-weight="700">02</text><text x="20" y="74" fill="#F1EDFF" font-size="25" font-weight="700">Compose</text><text x="20" y="105" fill="#BDBCDD" font-size="14">Existing UI · shadcn · React Bits</text><text x="20" y="127" fill="#BDBCDD" font-size="14">Components with a clear job</text></g>
+    <g transform="translate(608 94)"><rect width="267" height="154" rx="18" fill="#241F3C" stroke="#8765A5"/><circle cx="28" cy="30" r="14" fill="#C9A2E8"/><text x="28" y="35" fill="#0B1220" text-anchor="middle" font-size="13" font-weight="700">03</text><text x="20" y="74" fill="#F5EFFF" font-size="25" font-weight="700">Choreograph</text><text x="20" y="105" fill="#C8BED9" font-size="14">CSS · GSAP · optional 3D</text><text x="20" y="127" fill="#C8BED9" font-size="14">Ownership and graceful fallback</text></g>
+    <g transform="translate(891 94)"><rect width="267" height="154" rx="18" fill="#2A2639" stroke="#B6896B"/><circle cx="28" cy="30" r="14" fill="#FBC89B"/><text x="28" y="35" fill="#0B1220" text-anchor="middle" font-size="13" font-weight="700">04</text><text x="20" y="74" fill="#FFF2E4" font-size="25" font-weight="700">Verify</text><text x="20" y="105" fill="#DDC8BA" font-size="14">Playwright · targeted DevTools</text><text x="20" y="127" fill="#DDC8BA" font-size="14">Fix and show browser evidence</text></g>
+    <path d="M1033 263V294H170V263" fill="none" stroke="#667990" stroke-width="1.5" stroke-dasharray="5 7"/>
+    <path d="m170 263 -6 9 12 0z" fill="#667990"/>
+    <text x="601" y="318" text-anchor="middle" fill="#9BB0C1" font-size="14" letter-spacing="1">EVIDENCE FEEDS THE NEXT DECISION</text>
+  </g>
+</svg>

@@ -15,7 +15,12 @@
   ],
   "scripts": {
     "test": "node --test",
-    "pack:check": "npm pack --dry-run --json"
+    "pack:check": "npm pack --dry-run --json",
+    "prepublishOnly": "npm test"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "engines": {
     "node": ">=20"

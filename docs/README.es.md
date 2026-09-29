@@ -1,8 +1,10 @@
+<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-hero.webp" alt="Núcleo de orquestación que conecta dirección visual, componentes, movimiento y validación" width="100%" /></p>
+
 # Orchestrator Pipeline
 
 **Una dirección. Varias especialidades. Evidencia en el navegador.**
 
-[Português (BR)](../README.md) · [English](README.en.md) · [Español](README.es.md)
+[English](../README.md) · [Português (BR)](README.pt-BR.md) · **Español**
 
 Orchestrator Pipeline es una skill abierta para agentes que implementan interfaces. Coordina dirección visual, componentes, movimiento, 3D y validación en cuatro etapas. Cada herramienta cumple una función clara y el resultado debe ser coherente, funcional y verificable.
 
@@ -26,6 +28,8 @@ npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestra
 
 El paquete se ejecuta desde GitHub y **no necesita publicarse en el registro npm**. Ejecuta `npm exec --package=skills@latest -- skills add` para cada origen y se detiene en el primer error. Si falla uno, corrige el acceso y vuelve a ejecutar el comando. No requiere una licencia de pago ni redistribuye aquí el contenido de terceros.
 
+Después de la primera publicación en npm, también podrás usar `npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex`. Hasta entonces, usa los comandos de GitHub anteriores.
+
 ## Las piezas del conjunto
 
 | Skill | Función | Fuente |
@@ -43,6 +47,8 @@ El paquete se ejecuta desde GitHub y **no necesita publicarse en el registro npm
 Las skills de 3D se instalan juntas, pero solo se cargan cuando el trabajo lo requiere. Taste no impone una estética de landing page a un panel administrativo. React Bits es un **registro de componentes** accesible mediante shadcn MCP, no otra skill obligatoria.
 
 ## Las cuatro etapas
+
+<p align="center"><img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/pipeline-map.svg" alt="Cuatro etapas con la evidencia realimentando la implementación" width="100%" /></p>
 
 ```mermaid
 flowchart TD
@@ -84,6 +90,10 @@ y entrega las cuatro etapas con pruebas y evidencia del navegador.
 ```
 
 Consulta la [skill completa y su plantilla para workers](../skills/orchestrator-pipeline/SKILL.md). Por defecto, la instalación se limita al proyecto y no modifica las skills globales. Comprueba el resultado con `npx skills ls -a codex` (añade `-g` para el ámbito global).
+
+## Publicar en npm
+
+El titular de la cuenta npm `klebr55` debe ejecutar `npm login` en su equipo. Confirma la cuenta con `npm whoami`, ejecuta `npm test` y `npm pack --dry-run`, revisa los archivos y publica la primera versión con `npm publish --access public`. Nunca compartas contraseñas ni tokens en el chat. Después, puedes configurar [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) para el workflow manual `.github/workflows/publish.yml` y publicar nuevas versiones sin un token permanente. Consulta la [guía completa en inglés](../README.md#publish-to-npm).
 
 ## Autoría y límites
 
