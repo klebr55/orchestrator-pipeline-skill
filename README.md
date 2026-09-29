@@ -130,6 +130,7 @@ diagnostics where its deeper evidence helps. Report fixes and browser evidence.
 The package is prepared as **`@klebr55/orchestrator-pipeline-skill`** with public access. The GitHub installer works independently of npm publication. To make the registry command above live, the package owner needs an [npm account](https://www.npmjs.com/signup) whose username owns the `@klebr55` scope.
 
 ```bash
+git clone https://github.com/klebr55/orchestrator-pipeline-skill.git
 cd orchestrator-pipeline-skill
 npm login
 npm whoami
@@ -140,7 +141,7 @@ npm publish --access public
 
 Review the `npm pack --dry-run` file list before publishing. npm requires publishing authorization, typically account two-factor authentication for a direct release; run the login and verification on your own machine, and never paste a token into an issue or chat. The first release is irreversible as a version identifier; future updates need a new version number. See [npm's public scoped package guide](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages/).
 
-After the first release, the maintainer can configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) for this repository and the `.github/workflows/publish.yml` workflow. That manually triggered workflow publishes subsequent versions through GitHub Actions OIDC, without a long-lived npm publish token. Its npm setting must permit **direct publishing**, and each new release must have an unused version.
+After the first release, configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) in the package settings: provider **GitHub Actions**, owner **`klebr55`**, repository **`orchestrator-pipeline-skill`**, workflow filename **`publish.yml`**, and **direct publishing** allowed. The manually triggered `.github/workflows/publish.yml` then publishes subsequent versions through GitHub Actions OIDC, without a long-lived npm publish token. Bump `package.json` to an unused version, commit it to `main`, and run the workflow from `main`.
 
 ## Authorship and limits
 
