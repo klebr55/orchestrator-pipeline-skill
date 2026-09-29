@@ -1,0 +1,38 @@
+{
+  "name": "@klebr55/orchestrator-pipeline-skill",
+  "version": "1.0.0",
+  "description": "A coordinated interface skill bundle and installer for coding agents",
+  "type": "module",
+  "bin": {
+    "orchestrator-pipeline": "./bin/orchestrator-pipeline.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "skills/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run --json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klebr55/orchestrator-pipeline-skill.git"
+  },
+  "homepage": "https://github.com/klebr55/orchestrator-pipeline-skill#readme",
+  "bugs": "https://github.com/klebr55/orchestrator-pipeline-skill/issues",
+  "keywords": [
+    "agent-skills",
+    "frontend",
+    "design",
+    "playwright",
+    "threejs",
+    "react-three-fiber"
+  ],
+  "license": "MIT"
+}
