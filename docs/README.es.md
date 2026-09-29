@@ -4,7 +4,7 @@
 
 **Una dirección. Varias especialidades. Evidencia en el navegador.**
 
-[English](../README.md) · [Português (BR)](README.pt-BR.md) · **Español**
+[🇬🇧 English](../README.md) · [🇧🇷 Português (BR)](README.pt-BR.md) · **🇪🇸 Español**
 
 Orchestrator Pipeline es una skill abierta para agentes que implementan interfaces. Coordina dirección visual, componentes, movimiento, 3D y validación en cuatro etapas. Cada herramienta cumple una función clara y el resultado debe ser coherente, funcional y verificable.
 
@@ -88,10 +88,6 @@ y entrega las cuatro etapas con pruebas y evidencia del navegador.
 ```
 
 Consulta la [skill completa y su plantilla para workers](../skills/orchestrator-pipeline/SKILL.md). Por defecto, la instalación se limita al proyecto y no modifica las skills globales. Comprueba el resultado con `npx skills ls -a codex` (añade `-g` para el ámbito global).
-
-## Próximas versiones
-
-La versión `1.0.0` ya está publicada. Las siguientes versiones usan [trusted publishing de npm](https://docs.npmjs.com/trusted-publishers/) mediante el workflow manual [Publish to npm](../.github/workflows/publish.yml) en GitHub, sin un token permanente. Actualiza `package.json` y `package-lock.json` a una versión nueva, revisa los archivos con `npm pack --dry-run`, ejecuta `npm test`, registra los cambios en `main` y ejecuta el workflow desde Actions. Comprueba la versión publicada en [npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). Consulta la [guía en inglés](../README.md#releasing).
 
 ## Autoría y límites
 
