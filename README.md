@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <strong>English</strong> · <a href="docs/README.pt-BR.md">Português (Brasil)</a> · <a href="docs/README.es.md">Español</a>
+  <strong>🇬🇧 English</strong> · <a href="docs/README.pt-BR.md">🇧🇷 Português (Brasil)</a> · <a href="docs/README.es.md">🇪🇸 Español</a>
 </p>
 
 ---
@@ -27,7 +27,7 @@ Orchestrator Pipeline is an open Agent Skill for frontend workers. It coordinate
   <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/pipeline-map.svg" alt="Four-stage pipeline: understand the product, choose components, coordinate motion and 3D, and validate in the browser; findings feed back into implementation" width="100%" />
 </p>
 
-<p align="center"><a href="#install">Install</a> · <a href="#the-ensemble">The ensemble</a> · <a href="#how-it-works">How it works</a> · <a href="#configure-the-tools">Configure tools</a> · <a href="#releasing">Releasing</a></p>
+<p align="center"><a href="#install">Install</a> · <a href="#the-ensemble">The ensemble</a> · <a href="#how-it-works">How it works</a> · <a href="#configure-the-tools">Configure tools</a></p>
 
 ## Install
 
@@ -120,12 +120,6 @@ motion ownership, and whether 3D serves the product. Implement the complete stat
 Validate changed routes with Playwright CLI; use Chrome DevTools MCP for targeted
 diagnostics where its deeper evidence helps. Report fixes and browser evidence.
 ```
-
-## Releasing
-
-The initial `1.0.0` release is public on npm. Subsequent releases use [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) with the manually triggered [GitHub Actions workflow](.github/workflows/publish.yml). The trust relationship is configured for `klebr55/orchestrator-pipeline-skill` and `publish.yml`, with direct publishing allowed. No long-lived npm token is needed in GitHub Actions.
-
-Update `package.json` and `package-lock.json` to the next unused version, review the documentation and package contents, run `npm test` and `npm pack --dry-run`, then commit the changes to `main`. Run **Publish to npm** from GitHub Actions on `main` and verify the version on [npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). A published name/version pair cannot be reused. The workflow uses GitHub OIDC on a hosted runner and requires Node.js 24 with a current npm CLI.
 
 ## Authorship and limits
 
