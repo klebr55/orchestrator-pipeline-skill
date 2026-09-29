@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg?v=2b43980" alt="Orchestrator Pipeline. One direction. Many specialists. Evidence in the browser. Four stages and the technology ecosystem." width="100%" />
+  <img src="https://raw.githubusercontent.com/klebr55/orchestrator-pipeline-skill/main/assets/orchestrator-banner.svg?v=a834539" alt="Orchestrator Pipeline. One direction. Many specialists. Evidence in the browser. Four stages and the technology ecosystem." width="100%" />
 </p>
 
 <h1 align="center">Orchestrator Pipeline</h1>
