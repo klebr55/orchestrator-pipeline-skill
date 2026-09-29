@@ -15,7 +15,7 @@ O Orchestrator Pipeline é uma skill aberta para agentes que implementam interfa
 Node.js 20+ e Git são necessários. Execute na pasta do projeto:
 
 ```bash
-npx --yes --package=github:klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
+npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex
 ```
 
 O comando instala **nove skills**: esta skill e oito skills complementares, diretamente dos repositórios de seus respectivos autores. Para disponibilizá-las em todos os projetos, acrescente `--global`. Para outro agente compatível com o [Skills CLI](https://github.com/vercel-labs/skills), troque `codex` por `antigravity`, `cursor`, `claude-code` ou seu identificador. Veja os comandos antes de executar com `--dry-run`.
@@ -23,12 +23,10 @@ O comando instala **nove skills**: esta skill e oito skills complementares, dire
 Com npm, o mesmo fluxo é:
 
 ```bash
-npm exec --yes --package=github:klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
+npm exec --yes --package=@klebr55/orchestrator-pipeline-skill -- orchestrator-pipeline install --agent codex
 ```
 
-Este pacote pode ser executado diretamente do GitHub; **não depende de publicação no registro npm**. A instalação usa `npm exec --package=skills@latest -- skills add` para cada origem e para se no primeiro erro. Se uma origem falhar, corrija o acesso e repita o comando. O instalador não pede licença paga e não copia as skills de terceiros para este repositório.
-
-Após a primeira publicação no registro npm, também será possível usar `npx --yes --package=@klebr55/orchestrator-pipeline-skill orchestrator-pipeline install --agent codex`. Até lá, use os comandos do GitHub acima.
+O pacote está [publicado no npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). O instalador usa `npm exec --package=skills@latest -- skills add` para cada origem e para no primeiro erro. Se uma origem falhar, corrija o acesso e repita o comando. Ele não pede licença paga e não copia as skills de terceiros para este repositório. Para executar diretamente do GitHub, substitua `--package=@klebr55/orchestrator-pipeline-skill` por `--package=github:klebr55/orchestrator-pipeline-skill`.
 
 ## O que entra no conjunto
 
@@ -91,9 +89,9 @@ e entregue os quatro checkpoints com testes e evidência no navegador.
 
 O [arquivo da skill](../skills/orchestrator-pipeline/SKILL.md) contém o roteiro completo e um modelo de repasse ao worker. A instalação na pasta do projeto é a opção padrão; ela evita mexer nas skills globais. Para conferir o resultado, use `npx skills ls -a codex` (ou acrescente `-g` para o escopo global).
 
-## Publicar no npm
+## Próximas versões
 
-Quem publicar precisa ter permissão no escopo npm `@klebr55`. Se `npm whoami` retornar outra conta, ela precisa pertencer à organização npm `klebr55` com acesso de publicação; a alternativa é renomear o pacote para o escopo da conta e empacotar novamente. Execute `npm login` no próprio computador, confirme com `npm whoami`, rode `npm test` e `npm pack --dry-run`, confira os arquivos e publique a primeira versão com `npm publish --access public`. Nunca envie senhas ou tokens pelo chat. Após a primeira publicação, configure o [trusted publishing do npm](https://docs.npmjs.com/trusted-publishers/) para o workflow manual `.github/workflows/publish.yml`. Veja o [guia completo em inglês](../README.md#publish-to-npm).
+A versão `1.0.0` já foi publicada. As próximas versões usam o [trusted publishing do npm](https://docs.npmjs.com/trusted-publishers/) com o workflow manual [Publish to npm](../.github/workflows/publish.yml) no GitHub, sem token de publicação permanente. Atualize `package.json` e `package-lock.json` para uma versão inédita, confira os arquivos com `npm pack --dry-run`, execute `npm test`, registre as alterações na `main` e rode o workflow pela aba Actions. Confirme a versão publicada no [npm](https://www.npmjs.com/package/@klebr55/orchestrator-pipeline-skill). Veja os detalhes no [guia em inglês](../README.md#releasing).
 
 ## Limites e autoria
 
