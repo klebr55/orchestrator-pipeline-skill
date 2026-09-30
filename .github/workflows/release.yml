@@ -50,7 +50,14 @@ jobs:
 
           proof_sha="$(sed -n '1p' publication-proof/npm-publication.txt)"
           proof_version="$(sed -n '2p' publication-proof/npm-publication.txt)"
+          proof_published="$(sed -n '3p' publication-proof/npm-publication.txt)"
           test "${proof_sha}" = "${HEAD_SHA}"
+
+          if [ "${proof_published}" != "true" ]; then
+            echo "published=false" >> "${GITHUB_OUTPUT}"
+            echo "The npm workflow completed without publishing a new version; no release will be created."
+            exit 0
+          fi
 
           package_name="$(node -p "require('./package.json').name")"
           package_version="$(node -p "require('./package.json').version")"
@@ -62,16 +69,19 @@ jobs:
           test "${published_version}" = "${package_version}"
 
           tag="v${package_version}"
+          echo "published=true" >> "${GITHUB_OUTPUT}"
           echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
           echo "version=${package_version}" >> "${GITHUB_OUTPUT}"
 
       - name: Read commit description
+        if: steps.release.outputs.published == 'true'
         shell: bash
         env:
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: git log -1 --format=%B "${HEAD_SHA}" > release-notes.md
 
       - name: Skip an existing release
+        if: steps.release.outputs.published == 'true'
         id: existing
         shell: bash
         env:
