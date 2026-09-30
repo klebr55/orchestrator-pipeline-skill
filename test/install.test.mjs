@@ -5,8 +5,8 @@ import { buildCommands, install, parseArgs, sources } from '../lib/install.mjs';
 test('installs the orchestrator and every companion skill from upstream', () => {
   const calls = [];
   const result = install(parseArgs(['install', '--agent', 'antigravity', '--global']), {
-    run(command, args) {
-      calls.push([command, args]);
+    run(command, args, options) {
+      calls.push([command, args, options]);
       return { status: 0 };
     },
     out() {}
@@ -14,7 +14,7 @@ test('installs the orchestrator and every companion skill from upstream', () => 
   assert.equal(result, 0);
   assert.equal(calls.length, sources.length);
   assert.deepEqual(calls.flatMap(([, args]) => args.flatMap((arg, i) => arg === '--skill' ? [args[i + 1]] : [])), sources.flatMap(source => source.skills));
-  assert.ok(calls.every(([, args]) => args.includes('antigravity') && args.includes('--global')));
+  assert.ok(calls.every(([, args, options]) => args.includes('antigravity') && args.includes('--global') && options.shell === (process.platform === 'win32')));
 });
 
 test('fails on a missing upstream without claiming the bundle succeeded', () => {
