@@ -56,3 +56,18 @@ jobs:
       - name: Publish to npm with trusted publishing
         if: steps.version.outputs.publish == 'true'
         run: npm publish --access public
+
+      - name: Record successful npm publication
+        if: steps.version.outputs.publish == 'true'
+        shell: bash
+        run: |
+          printf '%s\\n' "$GITHUB_SHA" > npm-publication.txt
+          printf '%s\\n' "$(node -p "require('./package.json').version")" >> npm-publication.txt
+
+      - name: Upload publication proof
+        if: steps.version.outputs.publish == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-publication-${{ github.run_id }}
+          path: npm-publication.txt
+          if-no-files-found: error
