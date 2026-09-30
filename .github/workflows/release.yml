@@ -1,0 +1,98 @@
+name: Create GitHub release
+
+on:
+  workflow_run:
+    workflows:
+      - Publish to npm
+    types:
+      - completed
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    if: >-
+      ${{ github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.head_branch == 'main' &&
+          github.event.workflow_run.head_repository.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download npm publication proof
+        uses: actions/download-artifact@v4
+        with:
+          name: npm-publication-${{ github.event.workflow_run.id }}
+          path: publication-proof
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Check out the published commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 1
+
+      - name: Validate publication and release source
+        id: release
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          EXPECTED_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          test "${GITHUB_REPOSITORY}" = "${EXPECTED_REPOSITORY}"
+          test "${HEAD_SHA}" != ""
+          [[ "${HEAD_SHA}" =~ ^[0-9a-f]{40}$ ]]
+          test "$(cat publication-proof/npm-publication.txt)" != ""
+
+          proof_sha="$(sed -n '1p' publication-proof/npm-publication.txt)"
+          proof_version="$(sed -n '2p' publication-proof/npm-publication.txt)"
+          test "${proof_sha}" = "${HEAD_SHA}"
+
+          package_name="$(node -p "require('./package.json').name")"
+          package_version="$(node -p "require('./package.json').version")"
+          test "${package_name}" = "@klebr55/orchestrator-pipeline-skill"
+          [[ "${package_version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]]
+          test "${proof_version}" = "${package_version}"
+
+          published_version="$(npm view "${package_name}@${package_version}" version --registry=https://registry.npmjs.org 2>/dev/null)"
+          test "${published_version}" = "${package_version}"
+
+          tag="v${package_version}"
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "version=${package_version}" >> "${GITHUB_OUTPUT}"
+
+      - name: Read commit description
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: git log -1 --format=%B "${HEAD_SHA}" > release-notes.md
+
+      - name: Skip an existing release
+        id: existing
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          if gh release view "${TAG}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            echo "exists=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "exists=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Create release from commit description
+        if: steps.existing.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.release.outputs.tag }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          gh release create "${TAG}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --target "${HEAD_SHA}" \
+            --title "${TAG}" \
+            --notes-file release-notes.md
