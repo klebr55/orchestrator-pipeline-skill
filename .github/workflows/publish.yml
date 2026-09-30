@@ -61,9 +61,9 @@ jobs:
         if: always()
         shell: bash
         run: |
-          printf '%s\\n' "$GITHUB_SHA" > npm-publication.txt
-          printf '%s\\n' "$(node -p "require('./package.json').version")" >> npm-publication.txt
-          printf '%s\\n' "${{ steps.version.outputs.publish }}" >> npm-publication.txt
+          printf '%s\n' "$GITHUB_SHA" > npm-publication.txt
+          printf '%s\n' "$(node -p "require('./package.json').version")" >> npm-publication.txt
+          printf '%s\n' "${{ steps.version.outputs.publish }}" >> npm-publication.txt
 
       - name: Upload publication proof
         if: always()
